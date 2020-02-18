@@ -4,7 +4,7 @@
 \alias{knn.annoy}
 \title{K Nearest Neighbour Search}
 \usage{
-knn.annoy(data, K = 30, trees = 150)
+knn.annoy(data, K = 30, trees = 150, return_dist = FALSE)
 }
 \arguments{
 \item{data}{matrix; input data matrix}
@@ -12,9 +12,11 @@ knn.annoy(data, K = 30, trees = 150)
 \item{K}{integer; number of nearest neighbours}
 
 \item{trees}{integer; number of trees in annoylib; more trees - more precise result}
+
+\item{return_dist}{bool; if TRUE a list of distances and indices is return}
 }
 \value{
-a n-by-k matrix of neighbor indices
+a n-by-k matrix of neighbor indices - parameter return_dist
 }
 \description{
 Uses a annoylib to find K nearest neighbors in dataset
