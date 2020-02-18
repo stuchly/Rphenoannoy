@@ -6,8 +6,9 @@
 #' @param data matrix; input data matrix
 #' @param K integer; number of nearest neighbours
 #' @param trees integer; number of trees in annoylib; more trees - more precise result
+#' @param return_dist bool; if TRUE a list of distances and indices is return
 #'
-#' @return a n-by-k matrix of neighbor indices
+#' @return a n-by-k matrix of neighbor indices - parameter return_dist 
 #'
 #' @examples
 #' iris_unique <- unique(iris) # Remove duplicates
@@ -15,7 +16,8 @@
 #' neighbors <- knn.annoy(data, k=10)
 #'
 #' @export
-knn.annoy<-function(data,K=30,trees=150){
+knn.annoy<-function(data,K=30,trees=150, return_dist=FALSE){
   res<-knn_annoy(data,K,trees)
+  if (return_dist) return(list(IND=do.call("rbind",res[[1]])+1,DIST=do.call("rbind",res[[2]])))
   return(do.call("rbind",res[[1]])+1)
 }
