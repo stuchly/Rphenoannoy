@@ -82,7 +82,7 @@ Rphenoannoy <-
           system.time(neighborMatrix <- find_neighbors(data, k = k + 1)[, -1])
       }  else {
         t1 <-
-          system.time(neighborMatrix <- KNN.annoy(data, K = k + 1, trees)[, -1]+1)
+          system.time(neighborMatrix <- KNN.annoy(data, K = k, trees)[, -1]+1)
       }
     
   } else {
