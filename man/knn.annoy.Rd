@@ -16,7 +16,7 @@ knn.annoy(data, K = 30, trees = 150, return_dist = FALSE)
 \item{return_dist}{bool; if TRUE a list of indices and distances is returned}
 }
 \value{
-a n-by-k matrix of neighbor indices - parameter return_dist
+a n-by-k matrix of neighbors indices or list(IND,DIST) see parameter return_dist
 }
 \description{
 Uses a annoylib to find K nearest neighbors in dataset

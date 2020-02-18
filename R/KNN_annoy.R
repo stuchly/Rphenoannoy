@@ -8,7 +8,7 @@
 #' @param trees integer; number of trees in annoylib; more trees - more precise result
 #' @param return_dist bool; if TRUE a list of indices and distances is returned
 #'
-#' @return a n-by-k matrix of neighbor indices - parameter return_dist 
+#' @return a n-by-k matrix of neighbors indices or list(IND,DIST) see parameter return_dist 
 #'
 #' @examples
 #' iris_unique <- unique(iris) # Remove duplicates
