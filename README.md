@@ -4,6 +4,7 @@ R implementation of the PhenoGraph algorithm
 ### Rphenograph
 
 A simple R implementation of the [PhenoGraph](http://www.cell.com/cell/abstract/S0092-8674(15)00637-6) [1] algorithm, which is a clustering method designed for high-dimensional single-cell data analysis. It works by creating a graph ("network") representing phenotypic similarities between cells by calclating the Jaccard coefficient between nearest-neighbor sets, and then identifying communities using the well known [Louvain method](https://sites.google.com/site/findcommunities/) in this graph. 
+This is a modified version of https://github.com/JinmiaoChenLab/Rphenograph, jaccard coefficients computaion is parallelized and approximate KNN (annoylib) together with an option to reuse KNN is added.
 
 
 ### Installation
@@ -14,7 +15,7 @@ To install the latest version from the github repository, use:
 if(!require(devtools)){
   install.packages("devtools") # If not already installed
 }
-devtools::install_github("JinmiaoChenLab/Rphenograph")
+devtools::install_github("stuchly/Rphenoannoy")
 ```
 
 
@@ -25,7 +26,7 @@ After installing the package, use the following code to run a simple example (to
 ``` r
 iris_unique <- unique(iris) # Remove duplicates
 data <- as.matrix(iris_unique[,1:4])
-Rphenograph_out <- Rphenograph(data, k = 45)
+Rphenograph_out <- Rphenoannoy(data, k = 45)
 modularity(Rphenograph_out[[2]])
 membership(Rphenograph_out[[2]])
 iris_unique$phenograph_cluster <- factor(membership(Rphenograph_out[[2]]))
