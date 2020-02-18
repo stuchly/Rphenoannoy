@@ -17,7 +17,7 @@ Rphenoannoy(
 
 \item{k}{integer; number of nearest neighbours (default:30)}
 
-\item{neighborMatrix}{matrix; (optional) procomputed indices of nearest neigbors}
+\item{neighborMatrix}{matrix; (optional) precomputed indices of nearest neigbors;1-based, 1st column will be discarded}
 
 \item{method}{character; if =="annoy" approximate nearest neigbors are computed (default:"annoy")}
 
