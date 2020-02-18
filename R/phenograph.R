@@ -41,7 +41,7 @@
 #'
 #' @importFrom igraph graph.data.frame cluster_louvain modularity membership
 #' @import ggplot2
-#' @useDynLib Rphenograph
+#' @useDynLib Rphenoannoy
 #'
 #' @export
 Rphenoannoy <-
