@@ -8,6 +8,9 @@
 #' @param trees integer; number of trees in annoylib; more trees - more precise result
 #' @param return_dist bool; if TRUE a list of indices and distances is returned
 #'
+#' @details If used as precomputed matrix for Rphenoannoy, discard first column - 1st nearest 
+#' neigbor is the point itself
+#' 
 #' @return a n-by-k matrix of neighbors indices or list(IND,DIST) see parameter return_dist 
 #'
 #' @examples

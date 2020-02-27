@@ -9,7 +9,7 @@
 #'
 #' @param data matrix; input data matrix
 #' @param k integer; number of nearest neighbours (default:30)
-#' @param neighborMatrix matrix; (optional) precomputed indices of nearest neigbors;1-based, 1st column will be discarded
+#' @param neighborMatrix matrix; (optional) precomputed indices of nearest neigbors;1-based.
 #' @param method character; if =="annoy" approximate nearest neigbors are computed (default:"annoy")
 #' @param trees int; number of trees for annoylib, more trees more precise but slower (default:150)
 #'
@@ -95,7 +95,7 @@ cat("DONE ~",
     "s\n",
     " Compute jaccard coefficient between nearest-neighbor sets...\n")
 message("Presorting knn...\n")
-nbh <- neighborMatrix[, 1:min(k, ncol(neighborMatrix))][,-1]
+nbh <- neighborMatrix[, 1:min(k, ncol(neighborMatrix))]
 t21 <- system.time(nbh <- t(apply(nbh, 1, sort)))
 cat("presorting DONE ~", t21[3], "s\n", " Start jaccard\n")
 t2 <- system.time(links <- jaccard_coeff_true_parallel(nbh))
