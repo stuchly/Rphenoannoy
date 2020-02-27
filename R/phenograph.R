@@ -12,6 +12,7 @@
 #' @param neighborMatrix matrix; (optional) precomputed indices of nearest neigbors;1-based.
 #' @param method character; if =="annoy" approximate nearest neigbors are computed (default:"annoy")
 #' @param trees int; number of trees for annoylib, more trees more precise but slower (default:150)
+#' @param threshold int; minimum number of common neighbors to add edge into graph
 #'
 #' @return a list contains the KNN matrix and a communities object, the operations of this class contains:
 #' \item{print}{returns the communities object itself, invisibly.}
@@ -49,20 +50,21 @@ Rphenoannoy <-
            k = 30,
            neighborMatrix = NULL,
            method = "annoy",
-           trees = 150) {
+           trees = 150,
+           threshold=0L) {
     if (is.null(neighborMatrix)) {
       if (is.data.frame(data))
         data <- as.matrix(data)
-      
+
       if (!is.matrix(data))
         stop("Wrong input data, should be a data frame of matrix!")
-      
+
       if (k < 1) {
         stop("k must be a positive integer!")
       } else if (k > nrow(data) - 2) {
         stop("k must be smaller than the total number of points!")
       }
-      
+
       message(
         "Run Rphenograph starts:",
         "\n",
@@ -75,7 +77,7 @@ Rphenoannoy <-
         "  -k is set to ",
         k
       )
-      
+
       cat("  Finding nearest neighbors...")
       if (method != "annoy") {
         t1 <-
@@ -84,7 +86,7 @@ Rphenoannoy <-
         t1 <-
           system.time(neighborMatrix <- knn.annoy(data, K = k, trees)[, -1])
       }
-    
+
   } else {
     t1 <- system.time(cat("  Nearest neighbors provided externally... "))
   }
@@ -98,7 +100,7 @@ message("Presorting knn...\n")
 nbh <- neighborMatrix[, 1:min(k, ncol(neighborMatrix))]
 t21 <- system.time(nbh <- t(apply(nbh, 1, sort)))
 cat("presorting DONE ~", t21[3], "s\n", " Start jaccard\n")
-t2 <- system.time(links <- jaccard_coeff_true_parallel(nbh))
+t2 <- system.time(links <- jaccard_coeff_true_parallel(nbh,threshold))
 
 cat("DONE ~",
     t2[3],

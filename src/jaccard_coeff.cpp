@@ -113,7 +113,7 @@ NumericMatrix jaccard_coeff(NumericMatrix idx) {
 }
 
 // [[Rcpp::export]]
-NumericMatrix jaccard_coeff_true_parallel(NumericMatrix idx) {
+NumericMatrix jaccard_coeff_true_parallel(NumericMatrix idx, int threshold=0) {
     int nrow = idx.nrow(), ncol = idx.ncol();
     
     NumericMatrix W(nrow*ncol, 3);
@@ -142,7 +142,7 @@ NumericMatrix jaccard_coeff_true_parallel(NumericMatrix idx) {
             }
             // std::cout<<std::endl;
             int u = intersection(ncol, x, y);  // count intersection number
-            if (u>0){
+            if (u>threshold){
                 W(i*ncol+j,0)=i+1;
                 W(i*ncol+j,1)=k+1;
                 W(i*ncol+j,2)=u/(2.0*ncol - u)/2;
