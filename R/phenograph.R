@@ -109,9 +109,15 @@ cat("DONE ~",
 links <- links[links[, 1] > 0,]
 relations <- as.data.frame(links)
 colnames(relations) <- c("from", "to", "weight")
-t3 <-
-  system.time(g <- graph.data.frame(relations, directed = FALSE))
-
+# t3 <-
+#   system.time(g <- graph.data.frame(relations, directed = FALSE))
+t3<-system.time({
+  N<-nrow(nbh)
+  A<-Matrix::sparseMatrix(i=relations$from, j=relations$to, x=relations$weight, dims=c(N,N))
+  rm(relations)
+  g<-graph_from_adjacency_matrix(A,weighted = TRUE,mode = "max")
+  rm(A)
+})
 # Other community detection algorithms:
 #    cluster_walktrap, cluster_spinglass,
 #    cluster_leading_eigen, cluster_edge_betweenness,
