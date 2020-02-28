@@ -15,7 +15,7 @@ Description: A simple R implementation of the phenograph [PhenoGraph](http://
 Depends:
     R (>= 2.10.0), ggplot2, igraph, Matrix
 Imports:
-    Matrix
+    Matrix,
     igraph(>= 1.0.1),
     RANN(>= 2.5),
     Rcpp (>= 0.12.0),
