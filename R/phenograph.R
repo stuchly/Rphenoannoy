@@ -11,7 +11,7 @@
 #' @param k integer; number of nearest neighbours (default:30)
 #' @param neighborMatrix matrix; (optional) precomputed indices of nearest neigbors;1-based.
 #' @param method character; if =="annoy" approximate nearest neigbors are computed (default:"annoy"), 
-#' "default" - the RANN::nn2 function is used, "balltree" paralelized version of vantage point tree is used
+#' "default" - the RANN::nn2 function is used, "balltree" parallelized version of vantage point tree is used
 #' @param trees int; number of trees for annoylib, more trees more precise but slower (default:150)
 #' @param threshold int; minimum number of common neighbors to add edge into graph
 #'
