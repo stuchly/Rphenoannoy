@@ -17,3 +17,7 @@ knn_annoy <- function(mat, K = 100L, trees = 150L) {
     .Call('_Rphenoannoy_knn_annoy', PACKAGE = 'Rphenoannoy', mat, K, trees)
 }
 
+openmp_knn_C <- function(coordinates, K, distance_function = 0L) {
+    .Call('_Rphenoannoy_openmp_knn_C', PACKAGE = 'Rphenoannoy', coordinates, K, distance_function)
+}
+

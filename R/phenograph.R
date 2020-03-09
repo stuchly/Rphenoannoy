@@ -10,7 +10,8 @@
 #' @param data matrix; input data matrix
 #' @param k integer; number of nearest neighbours (default:30)
 #' @param neighborMatrix matrix; (optional) precomputed indices of nearest neigbors;1-based.
-#' @param method character; if =="annoy" approximate nearest neigbors are computed (default:"annoy")
+#' @param method character; if =="annoy" approximate nearest neigbors are computed (default:"annoy"), 
+#' "default" - the RANN::nn2 function is used, "balltree" paralelized version of vantage point tree is used
 #' @param trees int; number of trees for annoylib, more trees more precise but slower (default:150)
 #' @param threshold int; minimum number of common neighbors to add edge into graph
 #'
@@ -79,13 +80,16 @@ Rphenoannoy <-
       )
 
       cat("  Finding nearest neighbors...")
-      if (method != "annoy") {
+      if (method == "default") {
         t1 <-
           system.time(neighborMatrix <- find_neighbors(data, k = k + 1)[, -1])
-      }  else {
+      }  else if (method=="annoy"){
         t1 <-
           system.time(neighborMatrix <- knn.annoy(data, K = k, trees)[, -1])
-      }
+      } else if (method=="balltree"){
+        t1 <-
+          system.time(neighborMatrix <- knn.balltree(data, K = k)$IND[, -1]) 
+      } else stop("unimplemented method")
 
   } else {
     t1 <- system.time(cat("  Nearest neighbors provided externally... "))

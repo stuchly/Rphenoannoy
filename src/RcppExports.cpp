@@ -52,12 +52,26 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// openmp_knn_C
+Rcpp::List openmp_knn_C(Rcpp::NumericMatrix coordinates, int K, int distance_function);
+RcppExport SEXP _Rphenoannoy_openmp_knn_C(SEXP coordinatesSEXP, SEXP KSEXP, SEXP distance_functionSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericMatrix >::type coordinates(coordinatesSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    Rcpp::traits::input_parameter< int >::type distance_function(distance_functionSEXP);
+    rcpp_result_gen = Rcpp::wrap(openmp_knn_C(coordinates, K, distance_function));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_Rphenoannoy_jaccard_coeff_parallel", (DL_FUNC) &_Rphenoannoy_jaccard_coeff_parallel, 1},
     {"_Rphenoannoy_jaccard_coeff", (DL_FUNC) &_Rphenoannoy_jaccard_coeff, 1},
     {"_Rphenoannoy_jaccard_coeff_true_parallel", (DL_FUNC) &_Rphenoannoy_jaccard_coeff_true_parallel, 2},
     {"_Rphenoannoy_knn_annoy", (DL_FUNC) &_Rphenoannoy_knn_annoy, 3},
+    {"_Rphenoannoy_openmp_knn_C", (DL_FUNC) &_Rphenoannoy_openmp_knn_C, 3},
     {NULL, NULL, 0}
 };
 
