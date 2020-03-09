@@ -9,7 +9,8 @@ Rphenoannoy(
   k = 30,
   neighborMatrix = NULL,
   method = "annoy",
-  trees = 150
+  trees = 150,
+  threshold = 0L
 )
 }
 \arguments{
@@ -17,11 +18,14 @@ Rphenoannoy(
 
 \item{k}{integer; number of nearest neighbours (default:30)}
 
-\item{neighborMatrix}{matrix; (optional) precomputed indices of nearest neigbors;1-based, 1st column will be discarded}
+\item{neighborMatrix}{matrix; (optional) precomputed indices of nearest neigbors;1-based.}
 
-\item{method}{character; if =="annoy" approximate nearest neigbors are computed (default:"annoy")}
+\item{method}{character; if =="annoy" approximate nearest neigbors are computed (default:"annoy"), 
+"default" - the RANN::nn2 function is used, "balltree" paralelized version of vantage point tree is used}
 
 \item{trees}{int; number of trees for annoylib, more trees more precise but slower (default:150)}
+
+\item{threshold}{int; minimum number of common neighbors to add edge into graph}
 }
 \value{
 a list contains the KNN matrix and a communities object, the operations of this class contains:

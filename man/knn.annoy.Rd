@@ -22,6 +22,10 @@ a n-by-k matrix of neighbors indices or list(IND,DIST) see parameter return_dist
 Uses a annoylib to find K nearest neighbors in dataset
 see https://github.com/spotify/annoy/
 }
+\details{
+If used as precomputed matrix for Rphenoannoy, discard first column - 1st nearest 
+neigbor is the point itself
+}
 \examples{
 iris_unique <- unique(iris) # Remove duplicates
 data <- as.matrix(iris_unique[,1:4])

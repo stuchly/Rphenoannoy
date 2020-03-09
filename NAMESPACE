@@ -3,6 +3,7 @@
 export(Rphenoannoy)
 export(find_neighbors)
 export(knn.annoy)
+export(knn.balltree)
 import(ggplot2)
 importFrom(RANN,nn2)
 importFrom(igraph,cluster_louvain)
