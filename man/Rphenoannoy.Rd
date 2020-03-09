@@ -21,7 +21,7 @@ Rphenoannoy(
 \item{neighborMatrix}{matrix; (optional) precomputed indices of nearest neigbors;1-based.}
 
 \item{method}{character; if =="annoy" approximate nearest neigbors are computed (default:"annoy"), 
-"default" - the RANN::nn2 function is used, "balltree" paralelized version of vantage point tree is used}
+"default" - the RANN::nn2 function is used, "balltree" parallelized version of vantage point tree is used}
 
 \item{trees}{int; number of trees for annoylib, more trees more precise but slower (default:150)}
 
