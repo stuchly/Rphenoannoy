@@ -17,7 +17,7 @@ I also use libraries from https://cran.r-project.org/web/packages/RcppAnnoy/inde
 
 
 ### Installation
-This code has been testing in R 3.6.3.
+This code has been tested in R 3.6.3.
 
 To install the latest version from the github repository, use:
 
