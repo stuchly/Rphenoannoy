@@ -24,6 +24,16 @@ To install the latest version from the github repository, use:
 if(!require(devtools)){
   install.packages("devtools") # If not already installed
 }
+devtools::install_github("stuchly/Rphenoannoy")
+```
+
+This version was fixed to run under windows (R 3.6.3) but was not
+thoroughly tested. For other platforms following commit is recommended.
+
+``` r
+if(!require(devtools)){
+  install.packages("devtools") # If not already installed
+}
 devtools::install_github("stuchly/Rphenoannoy@8b81e2e7fb0599f45070e2cba1b28ac219b7c472")
 ```
 
