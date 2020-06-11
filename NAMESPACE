@@ -1,4 +1,4 @@
-useDynLib(RcppAnnoy, .registration=TRUE)
+useDynLib(Rphenoannoy, .registration=TRUE)
 import(methods, Rcpp)
 export(Rphenoannoy)
 export(find_neighbors)
@@ -10,4 +10,4 @@ importFrom(igraph,cluster_louvain)
 importFrom(igraph,graph.data.frame)
 importFrom(igraph,membership)
 importFrom(igraph,modularity)
-useDynLib(Rphenoannoy)
+
