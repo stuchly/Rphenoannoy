@@ -24,7 +24,7 @@ To install the latest version from the github repository, use:
 if(!require(devtools)){
   install.packages("devtools") # If not already installed
 }
-devtools::install_github("stuchly/Rphenoannoy")
+devtools::install_github("stuchly/Rphenoannoy@8b81e2e7fb0599f45070e2cba1b28ac219b7c472")
 ```
 
 
