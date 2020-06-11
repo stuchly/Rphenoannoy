@@ -5,7 +5,15 @@ R implementation of the PhenoGraph algorithm
 
 A simple R implementation of the [PhenoGraph](http://www.cell.com/cell/abstract/S0092-8674(15)00637-6) [1] algorithm, which is a clustering method designed for high-dimensional single-cell data analysis. It works by creating a graph ("network") representing phenotypic similarities between cells by calclating the Jaccard coefficient between nearest-neighbor sets, and then identifying communities using the well known [Louvain method](https://sites.google.com/site/findcommunities/) in this graph. 
 
-This is a modified version of https://github.com/JinmiaoChenLab/Rphenograph, jaccard coefficients computation is parallelized, approximate KNN (annoylib) and parallelized ball tree KNN (see https://lvdmaaten.github.io/tsne/; parallelized by David Novak based on Multicore-TSNE by Dmitry Ulyanov: https://github.com/DmitryUlyanov/Multicore-TSNE) together with an option to reuse KNN is added.
+This is a modified version of
+https://github.com/JinmiaoChenLab/Rphenograph, jaccard coefficients
+computation is parallelized, approximate KNN (annoylib) and
+parallelized ball tree KNN (see https://lvdmaaten.github.io/tsne/;
+parallelized by David Novak based on Multicore-TSNE by Dmitry Ulyanov:
+https://github.com/DmitryUlyanov/Multicore-TSNE) together with an
+option to reuse KNN is added.
+
+I also use libraries from https://cran.r-project.org/web/packages/RcppAnnoy/index.html
 
 
 ### Installation
