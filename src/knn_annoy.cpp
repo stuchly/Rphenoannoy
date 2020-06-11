@@ -5,7 +5,13 @@
 // define R’s REprintf as the ’local’ error
 // print method for Annoy
 #include"Rcpp.h"
-#define __ERROR_PRINTER_OVERRIDE__REprintf
+#if defined(__MINGW32__)
+#undef Realloc
+#undef Free
+#endif
+
+// define R's REprintf as the 'local' error print method for Annoy
+#define __ERROR_PRINTER_OVERRIDE__  REprintf
 #include "annoylib.h"
 #include "kissrandom.h"
 #include <algorithm>
